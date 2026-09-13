@@ -1,0 +1,6 @@
+.DS_Store
+node_modules/
+career-ops/
+gmail-oauth.json
+.env
+*.log

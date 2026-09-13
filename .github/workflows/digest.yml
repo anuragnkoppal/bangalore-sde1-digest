@@ -1,0 +1,61 @@
+name: Bangalore SDE-1 digest
+
+on:
+  schedule:
+    # 7:00, 14:00, 17:00, 21:00 Asia/Kolkata (IST = UTC+5:30)
+    - cron: "30 1 * * *"
+    - cron: "30 8 * * *"
+    - cron: "30 11 * * *"
+    - cron: "30 15 * * *"
+  workflow_dispatch:
+
+jobs:
+  scan-and-mail:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      TZ: Asia/Kolkata
+      CAREER_OPS_MAIL_TO: anuragnkoppal@gmail.com
+    steps:
+      - name: Checkout digest overlay
+        uses: actions/checkout@v4
+
+      - name: Checkout career-ops
+        uses: actions/checkout@v4
+        with:
+          repository: career-ops-hq/career-ops
+          path: career-ops
+
+      - name: Overlay Bangalore filters
+        run: |
+          cp overlay/portals.yml career-ops/portals.yml
+          cp overlay/scripts/filter-pipeline-freshness.mjs career-ops/scripts/filter-pipeline-freshness.mjs
+          cp overlay/scripts/email-pipeline.mjs career-ops/scripts/email-pipeline.mjs
+          mkdir -p career-ops/data
+          printf '# Pipeline\n\n## Pending\n\n## Processed\n' > career-ops/data/pipeline.md
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: career-ops/package-lock.json
+
+      - name: Install
+        working-directory: career-ops
+        env:
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
+        run: npm ci --ignore-scripts
+
+      - name: Scan, filter, email
+        working-directory: career-ops
+        env:
+          CAREER_OPS_ROOT: ${{ github.workspace }}/career-ops
+          GMAIL_CLIENT_ID: ${{ secrets.GMAIL_CLIENT_ID }}
+          GMAIL_CLIENT_SECRET: ${{ secrets.GMAIL_CLIENT_SECRET }}
+          GMAIL_REFRESH_TOKEN: ${{ secrets.GMAIL_REFRESH_TOKEN }}
+        run: |
+          set -euo pipefail
+          node scan.mjs
+          node scripts/filter-pipeline-freshness.mjs
+          node scripts/email-pipeline.mjs
