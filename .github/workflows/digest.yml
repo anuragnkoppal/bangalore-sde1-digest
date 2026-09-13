@@ -43,7 +43,7 @@ jobs:
         working-directory: career-ops
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: "1"
-        run: npm ci --ignore-scripts
+        run: npm install --ignore-scripts
 
       - name: Scan, filter, email
         working-directory: career-ops
