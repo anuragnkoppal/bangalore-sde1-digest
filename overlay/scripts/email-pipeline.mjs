@@ -45,6 +45,15 @@ function slotLabel(d) {
   return 'night';
 }
 
+async function alreadySentThisSlot(token, slot) {
+  const q = `in:anywhere newer_than:12h subject:"Bangalore SDE-1 Java" subject:"(${slot})"`;
+  const url = `https://gmail.googleapis.com/gmail/v1/users/me/messages?maxResults=1&q=${encodeURIComponent(q)}`;
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+  if (!res.ok) return false;
+  const data = await res.json();
+  return Array.isArray(data.messages) && data.messages.length > 0;
+}
+
 function escapeHtml(s) {
   return String(s)
     .replace(/&/g, '&amp;')
@@ -203,6 +212,10 @@ const jobs = fs.existsSync(PIPELINE) ? loadJobs() : [];
 const now = new Date();
 const bodies = buildBodies(jobs, now);
 const token = await getAccessToken(oauth);
+if (await alreadySentThisSlot(token, slotLabel(now))) {
+  console.log(JSON.stringify({ skipped: true, reason: `already emailed ${slotLabel(now)} slot`, count: jobs.length }, null, 2));
+  process.exit(0);
+}
 const result = await sendMail(encodeMessage({ to: TO_EMAIL, ...bodies }), token);
 console.log(JSON.stringify({
   to: TO_EMAIL,
