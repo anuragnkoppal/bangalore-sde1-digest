@@ -1,13 +1,8 @@
 name: Bangalore SDE-1 digest
 
+# GitHub native `schedule` never fired on this account (0 runs).
+# Same as cold-email-outreach: trigger via cron-job.org → workflow_dispatch.
 on:
-  schedule:
-    # GitHub Free does not reliably fire schedule on private repos.
-    # This repo is public so the clock actually runs. Times are IST.
-    - cron: "0 7,14,17,21 * * *"
-      timezone: "Asia/Kolkata"
-    - cron: "15 7,14,17,21 * * *"
-      timezone: "Asia/Kolkata"
   workflow_dispatch:
 
 jobs:
