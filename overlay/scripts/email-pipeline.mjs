@@ -212,8 +212,9 @@ const jobs = fs.existsSync(PIPELINE) ? loadJobs() : [];
 const now = new Date();
 const bodies = buildBodies(jobs, now);
 const token = await getAccessToken(oauth);
-if (await alreadySentThisSlot(token, slotLabel(now))) {
-  console.log(JSON.stringify({ skipped: true, reason: `already emailed ${slotLabel(now)} slot`, count: jobs.length }, null, 2));
+const slot = slotLabel(now);
+if (process.env.GITHUB_EVENT_NAME === 'schedule' && await alreadySentThisSlot(token, slot)) {
+  console.log(JSON.stringify({ skipped: true, reason: `already emailed ${slot} slot`, count: jobs.length }, null, 2));
   process.exit(0);
 }
 const result = await sendMail(encodeMessage({ to: TO_EMAIL, ...bodies }), token);
