@@ -31,9 +31,19 @@ function parseLine(line) {
 
 const YEAR = '(?:years?|yrs|year\\(s\\))';
 
+function decodeHtml(s) {
+  return String(s)
+    .replace(/&plus;/gi, '+')
+    .replace(/&#x2b;/gi, '+')
+    .replace(/&#43;/g, '+')
+    .replace(/&nbsp;/gi, ' ')
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCharCode(parseInt(n, 16)));
+}
+
 function mentionsJava(text) {
   if (!text) return false;
-  const t = text.toLowerCase();
+  const t = decodeHtml(text).toLowerCase();
   if (t.includes('spring boot') || t.includes('springboot') || t.includes('spring framework')) return true;
   const re = /(?<![\p{L}\p{M}\p{N}_])java(?![\p{L}\p{M}\p{N}_])/gu;
   let m;
@@ -46,10 +56,11 @@ function mentionsJava(text) {
 
 function tooSenior(text) {
   if (!text) return false;
-  const t = text.toLowerCase().replace(/[–—]/g, '-').replace(/&ndash;|&mdash;/g, '-');
+  const t = decodeHtml(text).toLowerCase().replace(/[–—]/g, '-').replace(/&ndash;|&mdash;/g, '-');
   if (/\bsde\s*[-]?\s*(?:2|3|ii|iii)\b/.test(t)) return true;
   if (/\bengineer\s*[-]\s*[23]\b/.test(t)) return true;
   if (/\bengineer-[23]\b/.test(t)) return true;
+  if (/\b(?:lmts|smts|pmts)\b/.test(t)) return true;
   if (/\btechnical leader\b/.test(t)) return true;
   if (/\bsenior\b/.test(t) || /\bsr\.\b/.test(t)) return true;
 
