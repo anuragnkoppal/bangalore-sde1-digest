@@ -1,7 +1,7 @@
 # Bangalore SDE-1 scanner for Anurag N Koppal
 # Expanded: curated live boards + official career-ops GH/Lever/Ashby list + IBM/JPMC.
-# Digest also runs `scan-ats-full.mjs --seeds yc` so YC startups not listed
-# below (Avoca-class companies you may not have heard of) can still surface.
+# Digest also scans currently-hiring YC companies via overlay/scripts/scan-yc-hiring.mjs
+# (Greenhouse, Lever, Ashby) so names you have not heard of can still surface.
 # career-ops never auto-submits.
 
 scan_history:

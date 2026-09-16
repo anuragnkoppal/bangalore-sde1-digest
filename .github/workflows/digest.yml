@@ -27,6 +27,7 @@ jobs:
           cp overlay/portals.yml career-ops/portals.yml
           cp overlay/scripts/filter-pipeline-freshness.mjs career-ops/scripts/filter-pipeline-freshness.mjs
           cp overlay/scripts/email-pipeline.mjs career-ops/scripts/email-pipeline.mjs
+          cp overlay/scripts/scan-yc-hiring.mjs career-ops/scripts/scan-yc-hiring.mjs
           mkdir -p career-ops/data
           printf '# Pipeline\n\n## Pending\n\n## Processed\n' > career-ops/data/pipeline.md
 
@@ -51,8 +52,7 @@ jobs:
         run: |
           set -euo pipefail
           node scan.mjs
-          # YC portfolio only — not the 32k-board ATS directory (too slow 4x/day).
-          # Shuffle + cap so each digest samples a different slice of unknown startups.
-          node scan-ats-full.mjs --seeds yc --since 7 --shuffle --limit 800
+          # All currently-hiring YC companies (Greenhouse/Lever/Ashby), not a shuffled 800.
+          node scripts/scan-yc-hiring.mjs
           node scripts/filter-pipeline-freshness.mjs
           node scripts/email-pipeline.mjs
