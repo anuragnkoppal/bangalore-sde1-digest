@@ -18,3 +18,5 @@ The Action also lives on `cold-email-outreach` so the **same GitHub PAT** alread
 | **Body** | `{"ref":"main"}` |
 
 Filters: last 7 days, last 24 hours first, 1–3 YOE, Java/Spring, Bangalore.
+
+Company roster (always-scanned boards + YC overlay snapshot): [COMPANIES.md](COMPANIES.md).
