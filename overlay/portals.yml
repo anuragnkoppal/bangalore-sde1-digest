@@ -1,6 +1,7 @@
 # Bangalore SDE-1 scanner for Anurag N Koppal
 # Expanded: curated live boards + official career-ops GH/Lever/Ashby list + IBM/JPMC.
-# Daily scan also runs scan-ats-full.mjs across public ATS directories.
+# Digest also runs `scan-ats-full.mjs --seeds yc` so YC startups not listed
+# below (Avoca-class companies you may not have heard of) can still surface.
 # career-ops never auto-submits.
 
 scan_history:
@@ -890,6 +891,51 @@ tracked_companies:
   - name: Flex
     careers_url: https://job-boards.greenhouse.io/flex
     api: https://boards-api.greenhouse.io/v1/boards/flex/jobs
+    enabled: true
+
+  # Lesser-known / recently-visible Bangalore boards (Ashby / Greenhouse / Lever)
+  - name: Avoca AI
+    careers_url: https://jobs.ashbyhq.com/avoca
+    enabled: true
+  - name: AiPrise
+    careers_url: https://jobs.ashbyhq.com/aiprise
+    enabled: true
+  - name: Spector.ai
+    careers_url: https://jobs.ashbyhq.com/spector-ai
+    enabled: true
+  - name: Ema
+    careers_url: https://jobs.ashbyhq.com/ema
+    enabled: true
+  - name: Anyscale
+    careers_url: https://jobs.ashbyhq.com/anyscale
+    enabled: true
+  - name: Nirmata
+    careers_url: https://job-boards.greenhouse.io/nirmata
+    api: https://boards-api.greenhouse.io/v1/boards/nirmata/jobs
+    enabled: true
+  - name: Instawork
+    careers_url: https://job-boards.greenhouse.io/instawork
+    api: https://boards-api.greenhouse.io/v1/boards/instawork/jobs
+    enabled: true
+  - name: Britive
+    careers_url: https://job-boards.greenhouse.io/britive
+    api: https://boards-api.greenhouse.io/v1/boards/britive/jobs
+    enabled: true
+  - name: Prophecy
+    careers_url: https://job-boards.greenhouse.io/prophecysimpledatalabs
+    api: https://boards-api.greenhouse.io/v1/boards/prophecysimpledatalabs/jobs
+    enabled: true
+  - name: Zaimler
+    careers_url: https://jobs.lever.co/zaimler
+    enabled: true
+  - name: Neuron7
+    careers_url: https://jobs.lever.co/neuron7
+    enabled: true
+  - name: 100ms
+    careers_url: https://jobs.lever.co/100ms
+    enabled: true
+  - name: Safe Security
+    careers_url: https://jobs.lever.co/safe
     enabled: true
 
 job_boards:

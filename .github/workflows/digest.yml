@@ -51,5 +51,8 @@ jobs:
         run: |
           set -euo pipefail
           node scan.mjs
+          # YC portfolio only — not the 32k-board ATS directory (too slow 4x/day).
+          # Shuffle + cap so each digest samples a different slice of unknown startups.
+          node scan-ats-full.mjs --seeds yc --since 7 --shuffle --limit 800
           node scripts/filter-pipeline-freshness.mjs
           node scripts/email-pipeline.mjs
