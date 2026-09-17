@@ -938,6 +938,65 @@ tracked_companies:
     careers_url: https://jobs.lever.co/safe
     enabled: true
 
+  # Established product companies — subset of liquidslr/leetcode-company-wise-problems.
+  # Not the full ~470-name list. Only scannable boards that hire Bangalore SDEs.
+  # Skipped custom sites (Atlassian, Intuit, Uber, Microsoft, Google) and US-only shops.
+  - name: Autodesk
+    careers_url: https://autodesk.wd1.myworkdayjobs.com/Ext
+    provider: workday
+    max_pages: 15
+    enabled: true
+  - name: Intel
+    careers_url: https://intel.wd1.myworkdayjobs.com/External
+    provider: workday
+    max_pages: 15
+    enabled: true
+  - name: Workday
+    careers_url: https://workday.wd5.myworkdayjobs.com/Workday
+    provider: workday
+    max_pages: 15
+    enabled: true
+  - name: Box
+    careers_url: https://job-boards.greenhouse.io/boxinc
+    api: https://boards-api.greenhouse.io/v1/boards/boxinc/jobs
+    enabled: true
+  - name: Pure Storage
+    careers_url: https://job-boards.greenhouse.io/purestorage
+    api: https://boards-api.greenhouse.io/v1/boards/purestorage/jobs
+    enabled: true
+  - name: Commvault
+    careers_url: https://job-boards.greenhouse.io/commvault
+    api: https://boards-api.greenhouse.io/v1/boards/commvault/jobs
+    enabled: true
+  - name: GoDaddy
+    careers_url: https://job-boards.greenhouse.io/godaddy
+    api: https://boards-api.greenhouse.io/v1/boards/godaddy/jobs
+    enabled: true
+  - name: FourKites
+    careers_url: https://job-boards.greenhouse.io/fourkites
+    api: https://boards-api.greenhouse.io/v1/boards/fourkites/jobs
+    enabled: true
+  - name: PubMatic
+    careers_url: https://job-boards.greenhouse.io/pubmatic
+    api: https://boards-api.greenhouse.io/v1/boards/pubmatic/jobs
+    enabled: true
+  - name: Tripadvisor
+    careers_url: https://job-boards.greenhouse.io/tripadvisor
+    api: https://boards-api.greenhouse.io/v1/boards/tripadvisor/jobs
+    enabled: true
+  - name: Canonical
+    careers_url: https://job-boards.greenhouse.io/canonical
+    api: https://boards-api.greenhouse.io/v1/boards/canonical/jobs
+    enabled: true
+  - name: Samsara
+    careers_url: https://job-boards.greenhouse.io/samsara
+    api: https://boards-api.greenhouse.io/v1/boards/samsara/jobs
+    enabled: true
+  - name: Coursera
+    careers_url: https://job-boards.greenhouse.io/coursera
+    api: https://boards-api.greenhouse.io/v1/boards/coursera/jobs
+    enabled: true
+
 job_boards:
   - name: IBM India — Software Engineering
     provider: ibm

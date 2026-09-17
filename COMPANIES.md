@@ -1,15 +1,37 @@
 # Companies in the Bangalore SDE-1 Java digest
 
-Snapshot: **16 Sep 2026**. You are mailed a role only if it also passes: last 7 days, Bangalore/Bengaluru, Software Engineer / SDE / similar title, Java or Spring in the JD, and 1–3 YOE (not Staff / 4+ years / LMTS).
+Snapshot: **17 Sep 2026**. You are mailed a role only if it also passes: last 7 days, Bangalore/Bengaluru, Software Engineer / SDE / similar title, Java or Spring in the JD, and 1–3 YOE (not Staff / 4+ years / LMTS).
 
 Two sources:
 
-1. **Always scanned** — boards listed in `overlay/portals.yml` (every digest).
+1. **Always scanned** — boards listed in `overlay/portals.yml` (every digest). Includes a **subset** of [liquidslr/leetcode-company-wise-problems](https://github.com/liquidslr/leetcode-company-wise-problems) — established product companies with scannable ATS boards (Autodesk, Intel, Workday, Box, …). Not the full ~470-name list.
 2. **YC overlay** — every currently-hiring Y Combinator company the public directory returns, plus all South Asia HQ companies, probed on Greenhouse / Lever / Ashby. Names you have not heard of come from here.
+
+Custom career sites that are not scannable yet (Atlassian, Intuit, Uber, Microsoft, Google) are omitted even if they appear on the LeetCode list.
+
+### LeetCode-tagged extension (17 Sep 2026)
+
+Added from [liquidslr/leetcode-company-wise-problems](https://github.com/liquidslr/leetcode-company-wise-problems), not the whole list:
+
+| Company | ATS | Careers |
+| --- | --- | --- |
+| Autodesk | Workday | https://autodesk.wd1.myworkdayjobs.com/Ext |
+| Box | Greenhouse | https://job-boards.greenhouse.io/boxinc |
+| Canonical | Greenhouse | https://job-boards.greenhouse.io/canonical |
+| Commvault | Greenhouse | https://job-boards.greenhouse.io/commvault |
+| Coursera | Greenhouse | https://job-boards.greenhouse.io/coursera |
+| FourKites | Greenhouse | https://job-boards.greenhouse.io/fourkites |
+| GoDaddy | Greenhouse | https://job-boards.greenhouse.io/godaddy |
+| Intel | Workday | https://intel.wd1.myworkdayjobs.com/External |
+| PubMatic | Greenhouse | https://job-boards.greenhouse.io/pubmatic |
+| Pure Storage | Greenhouse | https://job-boards.greenhouse.io/purestorage |
+| Samsara | Greenhouse | https://job-boards.greenhouse.io/samsara |
+| Tripadvisor | Greenhouse | https://job-boards.greenhouse.io/tripadvisor |
+| Workday | Workday | https://workday.wd5.myworkdayjobs.com/Workday |
 
 ## Counts
 
-- Always scanned boards: **193** companies + **2** extra job sites (IBM India — Software Engineering, JPMorgan Chase).
+- Always scanned boards: **206** companies + **2** extra job sites (IBM India — Software Engineering, JPMorgan Chase).
 - YC currently hiring (public Algolia, capped at 1,000 of ~1,478): **1000**.
 - YC South Asia HQ (full list): **236**.
 - Of the hiring snapshot, HQ in Bengaluru: **11**; HQ in India / South Asia: **19**. US/EU YC companies still alert if they post a Bangalore Java role.
@@ -22,10 +44,10 @@ Two sources:
 
 | ATS | Companies |
 | --- | --- |
-| Greenhouse | 96 |
+| Greenhouse | 106 |
 | Ashby | 63 |
 | Lever | 20 |
-| Workday | 8 |
+| Workday | 11 |
 | Workable | 4 |
 | Amazon | 1 |
 | iCIMS | 1 |
@@ -54,6 +76,7 @@ Two sources:
 | Arize AI | Greenhouse | https://job-boards.greenhouse.io/arizeai |
 | Asana | Greenhouse | https://job-boards.greenhouse.io/asana |
 | Attio | Ashby | https://jobs.ashbyhq.com/attio |
+| Autodesk | Workday | https://autodesk.wd1.myworkdayjobs.com/Ext |
 | Avoca AI | Ashby | https://jobs.ashbyhq.com/avoca |
 | BCG | Greenhouse | https://job-boards.greenhouse.io/bcg |
 | Black Forest Labs | Greenhouse | https://job-boards.greenhouse.io/blackforestlabs |
@@ -62,8 +85,10 @@ Two sources:
 | Bolt | Ashby | https://jobs.ashbyhq.com/bolt |
 | Boomi | Greenhouse | https://job-boards.greenhouse.io/boomilp |
 | Bounce | Ashby | https://jobs.ashbyhq.com/bounce |
+| Box | Greenhouse | https://job-boards.greenhouse.io/boxinc |
 | Britive | Greenhouse | https://job-boards.greenhouse.io/britive |
 | Buildkite | Greenhouse | https://job-boards.greenhouse.io/buildkite |
+| Canonical | Greenhouse | https://job-boards.greenhouse.io/canonical |
 | Causaly | Ashby | https://jobs.ashbyhq.com/causaly |
 | Celonis | Greenhouse | https://job-boards.greenhouse.io/celonis |
 | CircleCI | Greenhouse | https://job-boards.greenhouse.io/circleci |
@@ -75,10 +100,12 @@ Two sources:
 | Cloudflare | Greenhouse | https://job-boards.greenhouse.io/cloudflare |
 | Cohere | Ashby | https://jobs.ashbyhq.com/cohere |
 | Coinbase | Greenhouse | https://job-boards.greenhouse.io/coinbase |
+| Commvault | Greenhouse | https://job-boards.greenhouse.io/commvault |
 | Confluent | Ashby | https://jobs.ashbyhq.com/confluent |
 | Contentful | Greenhouse | https://job-boards.greenhouse.io/contentful |
 | Corti | Ashby | https://jobs.ashbyhq.com/corti |
 | Coupang | Greenhouse | https://job-boards.greenhouse.io/coupang |
+| Coursera | Greenhouse | https://job-boards.greenhouse.io/coursera |
 | Cradle | Ashby | https://jobs.ashbyhq.com/cradlebio |
 | CRED | Lever | https://jobs.lever.co/cred |
 | CrowdStrike | Workday | https://crowdstrike.wd5.myworkdayjobs.com/crowdstrikecareers |
@@ -101,12 +128,14 @@ Two sources:
 | Figma | Greenhouse | https://job-boards.greenhouse.io/figma |
 | Flex | Greenhouse | https://job-boards.greenhouse.io/flex |
 | Forto | Ashby | https://jobs.ashbyhq.com/forto |
+| FourKites | Greenhouse | https://job-boards.greenhouse.io/fourkites |
 | Getir | Lever | https://jobs.lever.co/getir |
 | GetYourGuide | Greenhouse | https://job-boards.greenhouse.io/getyourguide |
 | GitLab | Greenhouse | https://job-boards.greenhouse.io/gitlab |
 | Glacis AI | Ashby | https://jobs.ashbyhq.com/glacis-ai |
 | Glance | Greenhouse | https://job-boards.greenhouse.io/glance |
 | Glean | Greenhouse | https://job-boards.greenhouse.io/gleanwork |
+| GoDaddy | Greenhouse | https://job-boards.greenhouse.io/godaddy |
 | Gorgias | Ashby | https://jobs.ashbyhq.com/gorgias |
 | Groww | Greenhouse | https://job-boards.greenhouse.io/groww |
 | Gusto | Greenhouse | https://job-boards.greenhouse.io/gusto |
@@ -123,6 +152,7 @@ Two sources:
 | Insider | Greenhouse | https://job-boards.greenhouse.io/insider |
 | Instacart | Greenhouse | https://job-boards.greenhouse.io/instacart |
 | Instawork | Greenhouse | https://job-boards.greenhouse.io/instawork |
+| Intel | Workday | https://intel.wd1.myworkdayjobs.com/External |
 | Intercom | Greenhouse | https://job-boards.greenhouse.io/intercom |
 | Isomorphic Labs | Greenhouse | https://job-boards.greenhouse.io/isomorphiclabs |
 | Jumia | Greenhouse | https://job-boards.greenhouse.io/jumia |
@@ -176,6 +206,8 @@ Two sources:
 | PostHog | Ashby | https://jobs.ashbyhq.com/posthog |
 | Postman | Greenhouse | https://job-boards.greenhouse.io/postman |
 | Prophecy | Greenhouse | https://job-boards.greenhouse.io/prophecysimpledatalabs |
+| PubMatic | Greenhouse | https://job-boards.greenhouse.io/pubmatic |
+| Pure Storage | Greenhouse | https://job-boards.greenhouse.io/purestorage |
 | Qonto | Lever | https://jobs.lever.co/qonto |
 | Qualtrics | Greenhouse | https://job-boards.greenhouse.io/qualtrics |
 | Redis | Ashby | https://jobs.ashbyhq.com/redis |
@@ -188,6 +220,7 @@ Two sources:
 | Safari AI | Greenhouse | https://job-boards.greenhouse.io/safariai |
 | Safe Security | Lever | https://jobs.lever.co/safe |
 | Salesforce | Workday | https://salesforce.wd12.myworkdayjobs.com/External_Career_Site |
+| Samsara | Greenhouse | https://job-boards.greenhouse.io/samsara |
 | Sanctuary AI | Lever | https://jobs.lever.co/sanctuary |
 | Sarvam AI | Ashby | https://jobs.ashbyhq.com/sarvam |
 | Scandit | Greenhouse | https://job-boards.greenhouse.io/scandit |
@@ -214,6 +247,7 @@ Two sources:
 | Toggl | Workable | https://apply.workable.com/toggl |
 | Trade Republic | Greenhouse | https://job-boards.greenhouse.io/traderepublicbank |
 | Travelperk | Ashby | https://jobs.ashbyhq.com/perk |
+| Tripadvisor | Greenhouse | https://job-boards.greenhouse.io/tripadvisor |
 | Twilio | Greenhouse | https://job-boards.greenhouse.io/twilio |
 | Vapi | Ashby | https://jobs.ashbyhq.com/vapi |
 | Vercel | Greenhouse | https://job-boards.greenhouse.io/vercel |
@@ -221,6 +255,7 @@ Two sources:
 | Wayve | Greenhouse | https://job-boards.greenhouse.io/wayve |
 | Weights & Biases (CoreWeave) | Greenhouse | https://job-boards.greenhouse.io/coreweave |
 | Wise | Greenhouse | https://job-boards.greenhouse.io/wise |
+| Workday | Workday | https://workday.wd5.myworkdayjobs.com/Workday |
 | WorkOS | Ashby | https://jobs.ashbyhq.com/workos |
 | Zaimler | Lever | https://jobs.lever.co/zaimler |
 | Zapier | Ashby | https://jobs.ashbyhq.com/zapier |
