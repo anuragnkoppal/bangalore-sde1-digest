@@ -996,6 +996,10 @@ tracked_companies:
     careers_url: https://job-boards.greenhouse.io/coursera
     api: https://boards-api.greenhouse.io/v1/boards/coursera/jobs
     enabled: true
+  - name: Imagine Learning
+    careers_url: https://jobs.jobvite.com/imagine-learning
+    company_eid: qHQaVfwm
+    enabled: true
 
 job_boards:
   - name: IBM India — Software Engineering

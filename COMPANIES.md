@@ -31,7 +31,7 @@ Added from [liquidslr/leetcode-company-wise-problems](https://github.com/liquids
 
 ## Counts
 
-- Always scanned boards: **206** companies + **2** extra job sites (IBM India — Software Engineering, JPMorgan Chase).
+- Always scanned boards: **207** companies + **2** extra job sites (IBM India — Software Engineering, JPMorgan Chase).
 - YC currently hiring (public Algolia, capped at 1,000 of ~1,478): **1000**.
 - YC South Asia HQ (full list): **236**.
 - Of the hiring snapshot, HQ in Bengaluru: **11**; HQ in India / South Asia: **19**. US/EU YC companies still alert if they post a Bangalore Java role.
@@ -51,6 +51,7 @@ Added from [liquidslr/leetcode-company-wise-problems](https://github.com/liquids
 | Workable | 4 |
 | Amazon | 1 |
 | iCIMS | 1 |
+| Jobvite | 1 |
 
 ### Full list
 
@@ -147,6 +148,7 @@ Added from [liquidslr/leetcode-company-wise-problems](https://github.com/liquids
 | Hotjar | Lever | https://jobs.lever.co/contentsquare |
 | Hugging Face | Workable | https://apply.workable.com/huggingface/ |
 | Hume AI | Greenhouse | https://job-boards.greenhouse.io/humeai |
+| Imagine Learning | Jobvite | https://jobs.jobvite.com/imagine-learning |
 | InMobi | Greenhouse | https://job-boards.greenhouse.io/inmobi |
 | Inngest | Ashby | https://jobs.ashbyhq.com/inngest |
 | Insider | Greenhouse | https://job-boards.greenhouse.io/insider |
