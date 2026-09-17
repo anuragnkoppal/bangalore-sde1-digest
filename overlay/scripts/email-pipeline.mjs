@@ -45,13 +45,49 @@ function slotLabel(d) {
   return 'night';
 }
 
-async function alreadySentThisSlot(token, slot) {
-  const q = `in:anywhere newer_than:12h subject:"Bangalore SDE-1 Java" subject:"(${slot})"`;
-  const url = `https://gmail.googleapis.com/gmail/v1/users/me/messages?maxResults=1&q=${encodeURIComponent(q)}`;
-  const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
-  if (!res.ok) return false;
-  const data = await res.json();
-  return Array.isArray(data.messages) && data.messages.length > 0;
+function fingerprint(jobs) {
+  return [...new Set(jobs.map((j) => j.url))].sort().join('\n');
+}
+
+function decodePartBody(data) {
+  return Buffer.from(String(data).replace(/-/g, '+').replace(/_/g, '/'), 'base64').toString('utf8');
+}
+
+function walkParts(payload, acc = { text: '', html: '' }) {
+  if (!payload) return acc;
+  const mime = String(payload.mimeType || '');
+  if (payload.body?.data) {
+    const raw = decodePartBody(payload.body.data);
+    if (mime === 'text/plain') acc.text += raw;
+    else if (mime === 'text/html') acc.html += raw;
+  }
+  for (const part of payload.parts || []) walkParts(part, acc);
+  return acc;
+}
+
+function urlsFromDigestBody(text) {
+  const found = String(text).match(/https?:\/\/[^\s<>"']+/g) || [];
+  return [...new Set(found.map((u) => u.replace(/[).,]+$/, '')))].sort().join('\n');
+}
+
+async function lastMailedFingerprint(token) {
+  const q = 'in:anywhere newer_than:2d subject:"Bangalore SDE-1 Java" -subject:"no roles"';
+  const listRes = await fetch(
+    `https://gmail.googleapis.com/gmail/v1/users/me/messages?maxResults=1&q=${encodeURIComponent(q)}`,
+    { headers: { Authorization: `Bearer ${token}` } },
+  );
+  if (!listRes.ok) return '';
+  const list = await listRes.json();
+  const id = list.messages?.[0]?.id;
+  if (!id) return '';
+  const msgRes = await fetch(
+    `https://gmail.googleapis.com/gmail/v1/users/me/messages/${id}?format=full`,
+    { headers: { Authorization: `Bearer ${token}` } },
+  );
+  if (!msgRes.ok) return '';
+  const msg = await msgRes.json();
+  const { text, html } = walkParts(msg.payload);
+  return urlsFromDigestBody(text || html);
 }
 
 function escapeHtml(s) {
@@ -207,16 +243,23 @@ function loadOauth() {
   throw new Error('Missing Gmail OAuth: set GMAIL_CLIENT_ID/SECRET/REFRESH_TOKEN or place gmail-oauth.json');
 }
 
-const oauth = loadOauth();
 const jobs = fs.existsSync(PIPELINE) ? loadJobs() : [];
+if (!jobs.length) {
+  console.log(JSON.stringify({ skipped: true, reason: 'no matching roles', count: 0 }, null, 2));
+  process.exit(0);
+}
+
+const oauth = loadOauth();
 const now = new Date();
 const bodies = buildBodies(jobs, now);
 const token = await getAccessToken(oauth);
-const slot = slotLabel(now);
-if (process.env.GITHUB_EVENT_NAME === 'schedule' && await alreadySentThisSlot(token, slot)) {
-  console.log(JSON.stringify({ skipped: true, reason: `already emailed ${slot} slot`, count: jobs.length }, null, 2));
+const lastFp = await lastMailedFingerprint(token);
+const fp = fingerprint(jobs);
+if (lastFp && lastFp === fp) {
+  console.log(JSON.stringify({ skipped: true, reason: 'same roles as last digest', count: jobs.length }, null, 2));
   process.exit(0);
 }
+
 const result = await sendMail(encodeMessage({ to: TO_EMAIL, ...bodies }), token);
 console.log(JSON.stringify({
   to: TO_EMAIL,
