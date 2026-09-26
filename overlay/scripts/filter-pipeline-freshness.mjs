@@ -123,6 +123,25 @@ async function fetchSnippet(url) {
         if (job) return `${job.title || ''} ${job.descriptionHtml || job.descriptionPlain || ''}`.replace(/<[^>]+>/g, ' ');
       }
     }
+    // amazon.jobs is a SPA — HTML has no quals. Use search.json (same as career-ops amazon provider).
+    const amz = url.match(/amazon\.jobs\/(?:[a-z]{2}\/)?jobs\/(\d+)/i);
+    if (amz) {
+      const jobId = amz[1];
+      const api = `https://www.amazon.jobs/en/search.json?base_query=${encodeURIComponent(jobId)}&result_limit=10`;
+      const res = await fetch(api, { signal: ctrl.signal, headers: { accept: 'application/json', 'user-agent': 'Mozilla/5.0 career-ops-filter' } });
+      if (res.ok) {
+        const json = await res.json();
+        const job = (json.jobs || []).find(j => String(j.id) === jobId || String(j.id_icims) === jobId || String(j.job_path || '').includes(`/${jobId}/`));
+        if (job) {
+          return [
+            job.title,
+            job.description,
+            job.basic_qualifications,
+            job.preferred_qualifications,
+          ].filter(Boolean).join(' ').replace(/<[^>]+>/g, ' ');
+        }
+      }
+    }
     const res = await fetch(url, { signal: ctrl.signal, redirect: 'follow', headers: { 'user-agent': 'Mozilla/5.0 career-ops-filter' } });
     if (!res.ok) return '';
     const html = await res.text();
