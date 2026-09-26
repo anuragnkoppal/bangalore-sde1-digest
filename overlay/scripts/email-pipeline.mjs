@@ -122,10 +122,10 @@ function buildBodies(jobs, now) {
     </tr>`;
   }).join('');
 
-  let text = `Bangalore SDE-1 Java list (${slot}) — ${stamp}\nLast 7 days, 1–3 YOE, Java/Spring. Last 24 hours first.\n\n`;
+  let text = `Bangalore SDE-1 Java list (${slot}) — ${stamp}\nLast 7 days, 1+ YOE (drop roles requiring 3+), Java/Spring. Last 24 hours first.\n\n`;
   let html = `<div style="font-family:-apple-system,Segoe UI,sans-serif;max-width:640px;color:#202124;">
   <p style="margin:0 0 8px;font-size:18px;font-weight:700;">Bangalore SDE-1 Java</p>
-  <p style="margin:0 0 16px;color:#5f6368;font-size:13px;">${escapeHtml(slot)} · ${escapeHtml(stamp)} · last 7 days · 1–3 YOE · Java/Spring</p>`;
+  <p style="margin:0 0 16px;color:#5f6368;font-size:13px;">${escapeHtml(slot)} · ${escapeHtml(stamp)} · last 7 days · 1+ YOE · Java/Spring</p>`;
 
   if (jobs.length === 0) {
     text += 'No matching roles right now.\n';

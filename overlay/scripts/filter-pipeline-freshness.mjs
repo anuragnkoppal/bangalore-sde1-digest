@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Keep only last-7-day pending roles, 1-3 YOE by title/JD year keywords,
+ * Keep only last-7-day pending roles, ~1–2 YOE (reject min/floor ≥3),
  * last 24 hours first. Does not submit applications.
  */
 import fs from 'node:fs';
@@ -64,17 +64,23 @@ function tooSenior(text) {
   if (/\btechnical leader\b/.test(t)) return true;
   if (/\bsenior\b/.test(t) || /\bsr\.\b/.test(t)) return true;
 
+  // Floor ≥3 YOE is too senior for 1+ / SDE-1 (e.g. Accenture "Minimum 3 year(s)").
   for (const m of t.matchAll(new RegExp(`(\\d+)\\s*(?:to|-)\\s*(\\d+)\\s*\\+?\\s*${YEAR}`, 'g'))) {
     const a = Number(m[1]);
-    const b = Number(m[2]);
-    if (a >= 4) return true;
-    if (a >= 3 && b >= 4) return true;
+    if (a >= 3) return true;
   }
   for (const m of t.matchAll(new RegExp(`(\\d+)\\s*\\+\\s*${YEAR}`, 'g'))) {
-    if (Number(m[1]) >= 4) return true;
+    if (Number(m[1]) >= 3) return true;
   }
   for (const m of t.matchAll(new RegExp(`(?:at least|minimum(?: of)?|min\\.? )\\s*(\\d+)\\s*${YEAR}`, 'g'))) {
-    if (Number(m[1]) >= 4) return true;
+    if (Number(m[1]) >= 3) return true;
+  }
+  // "3 year(s) of experience is required" / "requires 3 years of experience"
+  for (const m of t.matchAll(new RegExp(`(?:requires?|required|need(?:s|ed)?)\\s*(?:of\\s*)?(\\d+)\\s*${YEAR}`, 'g'))) {
+    if (Number(m[1]) >= 3) return true;
+  }
+  for (const m of t.matchAll(new RegExp(`(\\d+)\\s*${YEAR}\\s+(?:of\\s+)?(?:relevant\\s+)?experience\\s+(?:is\\s+)?required`, 'g'))) {
+    if (Number(m[1]) >= 3) return true;
   }
   return false;
 }
@@ -148,7 +154,7 @@ for (const job of jobs) {
     continue;
   }
   if (tooSenior(`${job.title} ${job.company}`)) {
-    dropped.push({ job, reason: 'title looks >3 YOE' });
+    dropped.push({ job, reason: 'title looks ≥3 YOE / senior' });
     continue;
   }
   dated.push(job);
@@ -158,7 +164,7 @@ for (const job of dated) {
   const snippet = await fetchSnippet(job.url);
   const haystack = `${job.title} ${snippet || ''}`;
   if (snippet && tooSenior(snippet)) {
-    job._drop = 'JD years look >3 YOE';
+    job._drop = 'JD requires ≥3 YOE';
     continue;
   }
   if (!mentionsJava(haystack)) {

@@ -1,6 +1,6 @@
 # Companies in the Bangalore SDE-1 Java digest
 
-Snapshot: **17 Sep 2026**. You are mailed a role only if it also passes: last 7 days, Bangalore/Bengaluru, Software Engineer / SDE / similar title, Java or Spring in the JD, and 1–3 YOE (not Staff / 4+ years / LMTS).
+Snapshot: **26 Sep 2026**. You are mailed a role only if it also passes: last 7 days, Bangalore/Bengaluru, Software Engineer / SDE / similar title, Java or Spring in the JD, and **1+ YOE** (roles that require **3+ years** are dropped; not Staff / LMTS).
 
 Two sources:
 
@@ -31,7 +31,7 @@ Added from [liquidslr/leetcode-company-wise-problems](https://github.com/liquids
 
 ## Counts
 
-- Always scanned boards: **207** companies + **2** extra job sites (IBM India — Software Engineering, JPMorgan Chase).
+- Always scanned boards: **206** companies + **2** extra job sites (IBM India — Software Engineering, JPMorgan Chase).
 - YC currently hiring (public Algolia, capped at 1,000 of ~1,478): **1000**.
 - YC South Asia HQ (full list): **236**.
 - Of the hiring snapshot, HQ in Bengaluru: **11**; HQ in India / South Asia: **19**. US/EU YC companies still alert if they post a Bangalore Java role.
@@ -47,7 +47,7 @@ Added from [liquidslr/leetcode-company-wise-problems](https://github.com/liquids
 | Greenhouse | 106 |
 | Ashby | 63 |
 | Lever | 20 |
-| Workday | 11 |
+| Workday | 10 |
 | Workable | 4 |
 | Amazon | 1 |
 | iCIMS | 1 |
@@ -58,7 +58,6 @@ Added from [liquidslr/leetcode-company-wise-problems](https://github.com/liquids
 | Company | ATS | Careers |
 | --- | --- | --- |
 | 100ms | Lever | https://jobs.lever.co/100ms |
-| Accenture | Workday | https://accenture.wd103.myworkdayjobs.com/AccentureCareers |
 | Ada | Greenhouse | https://job-boards.greenhouse.io/ada |
 | Adobe | Workday | https://adobe.wd5.myworkdayjobs.com/external_experienced |
 | Adyen | Greenhouse | https://job-boards.greenhouse.io/adyen |
